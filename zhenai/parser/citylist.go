@@ -3,7 +3,7 @@ package parser
 import (
 	"regexp"
 
-	"github.com/moz0yy/crawler/engin"
+	"github.com/mozyy/crawler/engin"
 )
 
 var cityRe = regexp.MustCompile(`<a target="_blank" href="(http://www.zhenai.com/zhenghun/[\w]+)"[^>]*>([^<]+)</a>`)

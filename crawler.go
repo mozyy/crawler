@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/moz0yy/crawler/engin"
-	"github.com/moz0yy/crawler/zhenai/parser"
+	"github.com/mozyy/crawler/engin"
+	"github.com/mozyy/crawler/zhenai/parser"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package engin
 import (
 	"log"
 
-	"github.com/moz0yy/crawler/fetcher"
+	"github.com/mozyy/crawler/fetcher"
 )
 
 // Run is start fetch
