@@ -1,9 +1,16 @@
 package engin
 
 import (
+	"fmt"
 	"log"
+	"time"
 
 	"github.com/mozyy/crawler/fetcher"
+)
+
+var (
+	count int
+	start = time.Now()
 )
 
 // Run is start fetch
@@ -25,6 +32,8 @@ func Run(seeds ...Request) {
 		requests = append(requests, parseResult.Requests...)
 		for _, item := range parseResult.Items {
 			log.Printf("Got item %s", item)
+			count++
 		}
+		fmt.Printf("count: %d, start: %v, end: %v", count, start, time.Now())
 	}
 }
