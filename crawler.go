@@ -7,9 +7,9 @@ import (
 
 func main() {
 	entry := engin.Request{
-		URL:    "http://www.zhenai.com/zhenhun",
+		URL:    "http://www.zhenai.com/zhenghun",
 		Parser: parser.CityList,
 	}
-	engin.Run(entry)
+	engin.RunSync(entry)
 
 }

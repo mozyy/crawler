@@ -1,9 +1,7 @@
 package engin
 
 import (
-	"fmt"
 	"log"
-	"time"
 
 	"github.com/mozyy/crawler/fetcher"
 )
@@ -26,10 +24,9 @@ func loop(requests []Request) {
 		select {
 		case result := <-chs:
 			for _, item := range result.Items {
-				log.Printf("Got item %s", item)
+				log.Printf("#%d: Got item %s", count, item)
 				count++
 			}
-			fmt.Printf("count: %d, start: %v, end: %v \n", count, start, time.Now())
 			go loop(result.Requests)
 		}
 	}
