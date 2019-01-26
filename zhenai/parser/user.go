@@ -7,29 +7,26 @@ import (
 	"github.com/mozyy/crawler/model"
 )
 
-var (
-	userBaseRe = regexp.MustCompile(
-		`<div class="des f-cl"[^>]*>([^<\s]+)\s\|\s([^<\s]+)\s\|\s([^<\s]+)\s\|\s([^<\s]+)\s\|\s([^<\s]+)\s\|\s([^<]+)</div>`)
-	// userOtherBe = regexp.MustCompile()
-)
+var userRe = regexp.MustCompile(
+	`<div class="des f-cl"[^>]*>(\S+)\s\|\s(\S+)\s\|\s(\S+)\s\|\s(\S+)\s\|\s(\S+)\s\|\s([^<]+)</div>`)
 
-// User is user list parser
+//<div class="des f-cl" data-v-3c42fade="">上海 | 58岁 | 中专 | 离异 | 165cm | 3000元以下</div>
+
+// User is city list parser
 func User(b []byte, name string) engin.Result {
-	r := userBaseRe.FindAllSubmatch(b, -1)
+	r := userRe.FindAllSubmatch(b, -1)
 	var result engin.Result
-	if len(r) < 1 {
-		return result
+	for _, v := range r {
+		item := model.User{
+			Name:      name,
+			Address:   string(v[1]),
+			Age:       string(v[2]),
+			Education: string(v[3]),
+			Marriage:  string(v[4]),
+			Height:    string(v[5]),
+			Income:    string(v[6]),
+		}
+		result.Items = append(result.Items, item)
 	}
-	v := r[0]
-	//长春 | 29岁 | 硕士 | 未婚 | 168cm | 8001-12000元
-	result.Items = append(result.Items, model.User{
-		Name:      name,
-		Address:   string(v[1]),
-		Age:       string(v[2]),
-		Education: string(v[3]),
-		Marriage:  string(v[4]),
-		Height:    string(v[5]),
-		Income:    string(v[6]),
-	})
 	return result
 }

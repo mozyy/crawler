@@ -7,7 +7,7 @@ import (
 )
 
 var cityRe = regexp.MustCompile(
-	`<a href="(http://album.zhenai.com/u/\w+)" target="_blank">([^<]+)</a>`)
+	`<a href="(http://album.zhenai.com/u/\d+)" target="_blank">([^<]+)</a>`)
 
 // City is city list parser
 func City(b []byte) engin.Result {
